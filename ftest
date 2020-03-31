@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+#include <regex>
+#define SIZE 100
+#define MAX 9999
+using namespace std;
+
+int main()
+{
+    char parsedString[1000];   //�������������ַ���
+    char * p=parsedString;
+
+    regex r1("[a-zA-Z]");
+    regex r2("[0-9a-zA-Z]");
+
+    printf("���������������ַ�����");
+    gets(parsedString);
+
+    char  state = '1';         //���浱ǰ�ѷ������ĸ�״̬����ʼ״̬��Ϊ'R'
+
+    while(1)
+    {
+        switch(state)           //״̬ת��ͼ������״̬��R��U��S
+        {
+        case '1'://״̬R�µĴ�������
+        {
+            if((*p>='a'&&*p<='z')|(*p>='A'&&*p<='Z'))
+            {
+                p++;
+                state='2';
+                break;
+            }
+            if(*p=='\0') //��ǰ�ַ�����������
+            {
+                printf("%s��������\n",parsedString);
+                return 0;
+            }
+            else
+            {
+                printf("%s����ȷ��\n",parsedString);
+                return 0;
+            }
+            break;
+        }
+        case '2'://״̬R�µĴ�������
+        {
+            if((*p>='a'&&*p<='z')|(*p>='A'&&*p<='Z')|(*p>='0'&&*p<='9'))
+            {
+                p++;
+                state='2';
+                break;
+            }
+            if(*p=='\0') //��ǰ�ַ�����������
+            {
+                printf("%s����ȷ�ģ�\n",parsedString);
+                return 0;
+            }
+            else
+            {
+                printf("%s����ȷ��\n",parsedString);
+                return 0;
+            }
+        }
+        }
+    }
+}
